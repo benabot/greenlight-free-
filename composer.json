@@ -1,0 +1,32 @@
+{
+  "name": "benoitabot/greenlight-free",
+  "description": "Theme WordPress block-first minimaliste, accessible et sobre.",
+  "type": "wordpress-theme",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "php": ">=7.4"
+  },
+  "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.1",
+    "phpcompatibility/phpcompatibility-wp": "^2.1",
+    "wp-coding-standards/wpcs": "^3.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "GreenlightFree\\Theme\\": "inc/"
+    }
+  },
+  "scripts": {
+    "lint": [
+      "@phpcs"
+    ],
+    "phpcs": "phpcs -p",
+    "phpcbf": "phpcbf -p"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    },
+    "sort-packages": true
+  }
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<ruleset name="Greenlight Free">
+	<description>WPCS baseline for the Greenlight Free theme.</description>
+
+	<arg name="basepath" value="."/>
+	<arg name="colors"/>
+	<arg value="p"/>
+
+	<file>functions.php</file>
+	<file>inc</file>
+	<file>patterns</file>
+
+	<exclude-pattern>vendor/*</exclude-pattern>
+	<exclude-pattern>.claude/*</exclude-pattern>
+
+	<config name="text_domain" value="greenlight-free"/>
+	<config name="minimum_supported_wp_version" value="6.5"/>
+	<config name="testVersion" value="7.4-"/>
+
+	<rule ref="WordPress-Core"/>
+	<rule ref="WordPress-Docs"/>
+	<rule ref="WordPress-Extra"/>
+	<rule ref="PHPCompatibilityWP"/>
+
+	<rule ref="WordPress.Files.FileName">
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+	</rule>
+</ruleset>

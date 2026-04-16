@@ -1,0 +1,382 @@
+<?php
+/**
+ * Minimal native SEO output.
+ *
+ * @package GreenlightFree
+ */
+
+namespace GreenlightFree\Theme;
+
+use WP_Post;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Outputs minimal SEO metadata when no SEO plugin is active.
+ */
+final class Seo {
+
+	/**
+	 * Registers WordPress hooks.
+	 *
+	 * @return void
+	 */
+	public static function register() {
+		add_action( 'wp_head', array( __CLASS__, 'render_head_tags' ), 1 );
+	}
+
+	/**
+	 * Renders the metadata tags.
+	 *
+	 * @return void
+	 */
+	public static function render_head_tags() {
+		if ( is_admin() || is_feed() || is_robots() || self::has_external_seo_plugin() ) {
+			return;
+		}
+
+		$description = self::get_meta_description();
+		$canonical   = self::get_canonical_url();
+		$og_image    = self::get_open_graph_image();
+		$og_type     = self::get_open_graph_type();
+
+		if ( $description ) {
+			printf(
+				"<meta name=\"description\" content=\"%s\" />\n",
+				esc_attr( $description )
+			);
+		}
+
+		if ( $canonical ) {
+			printf(
+				"<link rel=\"canonical\" href=\"%s\" />\n",
+				esc_url( $canonical )
+			);
+		}
+
+		printf(
+			"<meta property=\"og:locale\" content=\"%s\" />\n",
+			esc_attr( str_replace( '_', '-', determine_locale() ) )
+		);
+		printf(
+			"<meta property=\"og:site_name\" content=\"%s\" />\n",
+			esc_attr( get_bloginfo( 'name' ) )
+		);
+		printf(
+			"<meta property=\"og:title\" content=\"%s\" />\n",
+			esc_attr( wp_get_document_title() )
+		);
+		printf(
+			"<meta property=\"og:type\" content=\"%s\" />\n",
+			esc_attr( $og_type )
+		);
+
+		if ( $description ) {
+			printf(
+				"<meta property=\"og:description\" content=\"%s\" />\n",
+				esc_attr( $description )
+			);
+		}
+
+		if ( $canonical ) {
+			printf(
+				"<meta property=\"og:url\" content=\"%s\" />\n",
+				esc_url( $canonical )
+			);
+		}
+
+		if ( $og_image ) {
+			printf(
+				"<meta property=\"og:image\" content=\"%s\" />\n",
+				esc_url( $og_image )
+			);
+		}
+
+		self::render_schema_graph();
+	}
+
+	/**
+	 * Detects major SEO plugins to avoid duplicate tags.
+	 *
+	 * @return bool
+	 */
+	private static function has_external_seo_plugin() {
+		return defined( 'WPSEO_VERSION' )
+			|| defined( 'SEOPRESS_VERSION' )
+			|| class_exists( 'RankMath' )
+			|| class_exists( '\The_SEO_Framework\Load' );
+	}
+
+	/**
+	 * Builds a compact meta description.
+	 *
+	 * @return string
+	 */
+	private static function get_meta_description() {
+		if ( is_search() ) {
+			return self::normalize_description(
+				sprintf(
+					/* translators: %s: search query. */
+					__( 'Resultats de recherche pour "%s".', 'greenlight-free' ),
+					get_search_query()
+				)
+			);
+		}
+
+		if ( is_front_page() || is_home() ) {
+			return self::normalize_description( get_bloginfo( 'description' ) );
+		}
+
+		if ( is_singular() ) {
+			$post = get_queried_object();
+
+			if ( $post instanceof WP_Post ) {
+				$excerpt = has_excerpt( $post ) ? get_the_excerpt( $post ) : '';
+
+				if ( ! $excerpt ) {
+					$excerpt = wp_strip_all_tags( (string) get_post_field( 'post_content', $post ) );
+				}
+
+				return self::normalize_description( $excerpt );
+			}
+		}
+
+		if ( is_archive() ) {
+			$archive_description = get_the_archive_description();
+
+			if ( $archive_description ) {
+				return self::normalize_description( $archive_description );
+			}
+		}
+
+		return self::normalize_description( get_bloginfo( 'description' ) );
+	}
+
+	/**
+	 * Computes the canonical URL for the current view.
+	 *
+	 * @return string
+	 */
+	private static function get_canonical_url() {
+		if ( is_404() ) {
+			return '';
+		}
+
+		$canonical = wp_get_canonical_url();
+
+		if ( $canonical ) {
+			return $canonical;
+		}
+
+		if ( is_front_page() || is_home() || is_archive() || is_search() ) {
+			return get_pagenum_link( max( 1, (int) get_query_var( 'paged' ) ) );
+		}
+
+		return '';
+	}
+
+	/**
+	 * Resolves the Open Graph image.
+	 *
+	 * @return string
+	 */
+	private static function get_open_graph_image() {
+		if ( is_singular() ) {
+			$post = get_queried_object();
+
+			if ( $post instanceof WP_Post && has_post_thumbnail( $post ) ) {
+				$image = get_the_post_thumbnail_url( $post, 'full' );
+
+				if ( $image ) {
+					return $image;
+				}
+			}
+		}
+
+		return (string) get_site_icon_url( 512 );
+	}
+
+	/**
+	 * Resolves the Open Graph type.
+	 *
+	 * @return string
+	 */
+	private static function get_open_graph_type() {
+		if ( is_singular( 'post' ) ) {
+			return 'article';
+		}
+
+		return 'website';
+	}
+
+	/**
+	 * Outputs the JSON-LD graph.
+	 *
+	 * @return void
+	 */
+	private static function render_schema_graph() {
+		$graph = self::get_schema_graph();
+
+		if ( empty( $graph ) ) {
+			return;
+		}
+
+		$json = wp_json_encode(
+			array(
+				'@context' => 'https://schema.org',
+				'@graph'   => $graph,
+			),
+			JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
+		);
+
+		if ( ! $json ) {
+			return;
+		}
+
+		echo "<script type=\"application/ld+json\">\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static tag wrapper.
+		echo $json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Valid JSON-LD generated by wp_json_encode().
+		echo "\n</script>\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static tag wrapper.
+	}
+
+	/**
+	 * Builds the schema graph.
+	 *
+	 * @return array<int, array<string, mixed>>
+	 */
+	private static function get_schema_graph() {
+		$graph = array();
+
+		if ( is_front_page() || is_home() || is_singular( 'post' ) ) {
+			$graph[] = self::get_organization_schema();
+			$graph[] = self::get_website_schema();
+		}
+
+		if ( is_singular( 'post' ) ) {
+			$article = self::get_article_schema();
+
+			if ( ! empty( $article ) ) {
+				$graph[] = $article;
+			}
+		}
+
+		return array_values( array_filter( $graph ) );
+	}
+
+	/**
+	 * Builds the Organization schema.
+	 *
+	 * @return array<string, mixed>
+	 */
+	private static function get_organization_schema() {
+		$schema = array(
+			'@type' => 'Organization',
+			'@id'   => home_url( '/#organization' ),
+			'name'  => get_bloginfo( 'name' ),
+			'url'   => home_url( '/' ),
+		);
+
+		$logo = get_site_icon_url( 512 );
+
+		if ( $logo ) {
+			$schema['logo'] = array(
+				'@type' => 'ImageObject',
+				'url'   => $logo,
+			);
+		}
+
+		return $schema;
+	}
+
+	/**
+	 * Builds the WebSite schema.
+	 *
+	 * @return array<string, mixed>
+	 */
+	private static function get_website_schema() {
+		$schema = array(
+			'@type'           => 'WebSite',
+			'@id'             => home_url( '/#website' ),
+			'url'             => home_url( '/' ),
+			'name'            => get_bloginfo( 'name' ),
+			'inLanguage'      => str_replace( '_', '-', determine_locale() ),
+			'publisher'       => array(
+				'@id' => home_url( '/#organization' ),
+			),
+			'potentialAction' => array(
+				'@type'       => 'SearchAction',
+				'target'      => home_url( '/?s={search_term_string}' ),
+				'query-input' => 'required name=search_term_string',
+			),
+		);
+
+		$description = self::normalize_description( get_bloginfo( 'description' ) );
+
+		if ( $description ) {
+			$schema['description'] = $description;
+		}
+
+		return $schema;
+	}
+
+	/**
+	 * Builds the Article schema for posts.
+	 *
+	 * @return array<string, mixed>
+	 */
+	private static function get_article_schema() {
+		$post = get_queried_object();
+
+		if ( ! $post instanceof WP_Post ) {
+			return array();
+		}
+
+		$schema = array(
+			'@type'            => 'Article',
+			'@id'              => get_permalink( $post ) . '#article',
+			'headline'         => get_the_title( $post ),
+			'url'              => get_permalink( $post ),
+			'datePublished'    => get_post_time( DATE_W3C, false, $post ),
+			'dateModified'     => get_post_modified_time( DATE_W3C, false, $post ),
+			'mainEntityOfPage' => get_permalink( $post ),
+			'author'           => array(
+				'@type' => 'Person',
+				'name'  => get_the_author_meta( 'display_name', (int) $post->post_author ),
+			),
+			'publisher'        => array(
+				'@id' => home_url( '/#organization' ),
+			),
+		);
+
+		$description = self::get_meta_description();
+
+		if ( $description ) {
+			$schema['description'] = $description;
+		}
+
+		$image = get_the_post_thumbnail_url( $post, 'full' );
+
+		if ( $image ) {
+			$schema['image'] = array( $image );
+		}
+
+		return $schema;
+	}
+
+	/**
+	 * Normalizes description strings.
+	 *
+	 * @param string $description Raw description.
+	 * @return string
+	 */
+	private static function normalize_description( $description ) {
+		$description = trim( wp_strip_all_tags( $description ) );
+
+		if ( '' === $description ) {
+			return '';
+		}
+
+		return wp_html_excerpt( $description, 155, '…' );
+	}
+}

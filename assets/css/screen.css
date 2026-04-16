@@ -1,0 +1,154 @@
+/*
+  Greenlight Free — screen.css
+  CSS moderne, faible spécificité via :where().
+  Fonctions utilisées : clamp(), min(), oklch(), color-mix(), light-dark().
+  Les tokens de couleur et d'espacement viennent de theme.json via --wp--preset--.
+*/
+
+/* ─── Schéma de couleur + dark mode natif ──────────────────────────────── */
+
+:root {
+  color-scheme: light dark;
+
+  /*
+    Surcharge locale pour dark mode sans dépendance PHP.
+    On dérive depuis oklch pour garantir des contrastes perceptuellement
+    cohérents. Les blocs WordPress écrasent ces valeurs via theme.json ;
+    ces variables servent de fallback pour les éléments natifs.
+  */
+  --gl-bg:      light-dark(oklch(99% 0.005 110), oklch(14% 0.010 110));
+  --gl-text:    light-dark(oklch(16% 0.015 130), oklch(93% 0.008 110));
+  --gl-surface: light-dark(oklch(92% 0.014 110), oklch(22% 0.012 130));
+  --gl-accent:  light-dark(oklch(44% 0.120 163), oklch(62% 0.130 163));
+
+  /* Transparence dérivée de la couleur d'accent via color-mix() */
+  --gl-accent-subtle: color-mix(in oklch, var(--gl-accent) 12%, transparent);
+
+  /* Fluid spacing local — complète les tokens WordPress */
+  --gl-space-xs: clamp(0.25rem, 0.5vw, 0.5rem);
+  --gl-space-sm: clamp(0.5rem,  1vw,   0.75rem);
+  --gl-space-md: clamp(1rem,    2vw,   1.5rem);
+  --gl-space-lg: clamp(1.5rem,  4vw,   3rem);
+}
+
+/* ─── Reset minimal ─────────────────────────────────────────────────────── */
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+/* ─── Layout de base ────────────────────────────────────────────────────── */
+
+:where(.wp-site-blocks) {
+  min-block-size: 100vh;
+}
+
+:where(.wp-site-blocks > *) {
+  margin-block-start: 0;
+}
+
+/* Flux vertical interne — utilise le token WordPress défini dans theme.json */
+:where(main, article, header, footer) > * + * {
+  margin-block-start: var(--wp--custom--flow-space);
+}
+
+/*
+  Mesure de ligne : min() garantit que la valeur ne dépasse pas
+  68ch ni 100% sur petits écrans, sans media query.
+*/
+:where(p, ul, ol, blockquote, figure) {
+  max-inline-size: min(var(--wp--custom--measure, 68ch), 100%);
+}
+
+/* ─── Médias ────────────────────────────────────────────────────────────── */
+
+:where(img, svg, video) {
+  block-size: auto;
+  display: block;
+  max-inline-size: 100%;
+}
+
+/* ─── Formulaires et contrôles ──────────────────────────────────────────── */
+
+:where(input, textarea, select, button) {
+  font: inherit;
+}
+
+/* ─── Liens ─────────────────────────────────────────────────────────────── */
+
+:where(a) {
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.16em;
+}
+
+/* ─── Focus ─────────────────────────────────────────────────────────────── */
+
+:focus-visible {
+  outline: var(--wp--custom--focus-ring);
+  outline-offset: 0.18rem;
+}
+
+/* ─── Skip link ─────────────────────────────────────────────────────────── */
+
+.skip-link {
+  background: var(--wp--preset--color--contrast);
+  color: var(--wp--preset--color--base);
+  inset-block-start: 0.75rem;
+  inset-inline-start: 0.75rem;
+  padding: var(--gl-space-xs) var(--gl-space-sm);
+  position: absolute;
+  transform: translateY(-200%);
+  z-index: 1000;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* ─── Liste de posts ─────────────────────────────────────────────────────── */
+
+:where(.wp-block-post-template) {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+:where(.wp-block-post-template > li) {
+  margin: 0;
+}
+
+:where(.wp-block-post-template > li + li) {
+  border-block-start: 1px solid var(--wp--preset--color--surface);
+  padding-block-start: var(--wp--preset--spacing--m);
+}
+
+/* ─── Navigation ─────────────────────────────────────────────────────────── */
+
+:where(.wp-block-navigation__responsive-container-content) {
+  gap: var(--wp--preset--spacing--s);
+}
+
+/* ─── Pagination ─────────────────────────────────────────────────────────── */
+
+:where(.wp-block-query-pagination) {
+  margin-block-start: var(--wp--preset--spacing--m);
+}
+
+/* ─── Légendes ──────────────────────────────────────────────────────────── */
+
+:where(.wp-element-caption, figcaption) {
+  color: var(--wp--preset--color--contrast);
+  font-size: var(--wp--preset--font-size--sm);
+  opacity: 0.72;
+}
+
+/* ─── Fond subtil sur liens ciblés / hover ──────────────────────────────── */
+
+:where(a:hover, a:focus-visible) {
+  background-color: var(--gl-accent-subtle);
+}
