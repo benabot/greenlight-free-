@@ -1,0 +1,39 @@
+/*
+  Greenlight Free — editor.css
+  Styles d edition minimaux pour Gutenberg.
+*/
+
+.editor-styles-wrapper {
+  background: var(--wp--preset--color--background);
+  color: var(--wp--preset--color--text);
+  font-family: var(--wp--preset--font-family--system-sans);
+  font-size: var(--wp--preset--font-size--base);
+  line-height: 1.65;
+}
+
+.editor-styles-wrapper .is-root-container {
+  padding: var(--wp--preset--spacing--md);
+}
+
+.editor-styles-wrapper :where(p, ul, ol, blockquote, figure) {
+  max-inline-size: 42rem;
+}
+
+.editor-styles-wrapper :where(h1, h2, h3, h4) {
+  color: var(--wp--preset--color--text);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.editor-styles-wrapper .wp-block-post-title {
+  max-inline-size: 12ch;
+}
+
+.editor-styles-wrapper a {
+  color: var(--wp--preset--color--accent);
+}
+
+.editor-styles-wrapper .wp-block-button__link {
+  border-radius: var(--wp--custom--radius-button);
+}

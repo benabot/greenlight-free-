@@ -24,6 +24,7 @@ final class Setup {
 	public static function register() {
 		add_action( 'after_setup_theme', array( __CLASS__, 'configure_theme' ) );
 		add_action( 'init', array( __CLASS__, 'register_pattern_categories' ) );
+		add_filter( 'should_load_separate_core_block_assets', '__return_true' );
 	}
 
 	/**
@@ -51,10 +52,11 @@ final class Setup {
 				'style',
 			)
 		);
+		remove_theme_support( 'core-block-patterns' );
 
 		add_post_type_support( 'page', 'excerpt' );
 
-		add_editor_style( 'assets/css/screen.css' );
+		add_editor_style( 'assets/css/editor.css' );
 	}
 
 	/**

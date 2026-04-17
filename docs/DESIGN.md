@@ -50,8 +50,8 @@ Depth is a matter of light and shadow, not lines and boxes.
 *   **Default:** A bottom-only border using `outline_variant`.
 *   **Focus:** Transition the bottom border to `primary` (#4c6547) and shift the background to `surface-container-lowest` (#ffffff).
 
-### Signature Component: "The Carbon Badge"
-A specialized `chip` using `tertiary_container` (#e5f4c9) and `on_tertiary_container` (#505d3c). This high-contrast, low-saturation pill should be used to highlight eco-metrics (e.g., "0.2g CO2 per page view").
+### Signature Component: Measured Metrics Chip
+A specialized `chip` using `tertiary_container` (#e5f4c9) and `on_tertiary_container` (#505d3c). Use it only for eco-metrics that are actually measured and documented. If no trustworthy measurement exists, omit the chip entirely rather than displaying speculative carbon data.
 
 ## 6. Do’s and Don’ts
 

@@ -12,6 +12,7 @@ Tags: accessibility-ready, blog, full-site-editing, one-column
 */
 
 /*
-Le style runtime reste volontairement minimal et vit dans `assets/css/screen.css`.
+Le style runtime reste volontairement minimal et vit dans `assets/css/base.css`
+et ses feuilles ciblees chargees a la demande.
 Ce fichier sert d'abord d'en-tete de theme WordPress.
 */

@@ -1,0 +1,124 @@
+/*
+  Greenlight Free — front-page.css
+  Modules specifiques a la page d accueil statique.
+*/
+
+.front-panels {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(15rem, 0.8fr);
+  gap: var(--wp--preset--spacing--md);
+  align-items: start;
+}
+
+.front-panels > * {
+  margin: 0;
+  min-inline-size: 0;
+}
+
+.manifesto-panel,
+.capability-card {
+  padding: var(--wp--preset--spacing--lg);
+  border-radius: var(--gl-radius-card);
+  background: var(--wp--preset--color--surface);
+}
+
+.manifesto-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  min-block-size: 16rem;
+}
+
+.manifesto-panel h2 {
+  margin: 0;
+  max-inline-size: 13ch;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.capability-card p {
+  margin: 0;
+  color: var(--wp--preset--color--muted);
+}
+
+.front-panel--editorial {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.front-panel--ethical {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.capability-card--accent {
+  background: var(--wp--preset--color--accent);
+  color: var(--wp--preset--color--background);
+}
+
+.capability-card--accent .eyebrow,
+.capability-card--accent p {
+  color: color-mix(in srgb, var(--wp--preset--color--background) 92%, transparent);
+}
+
+.front-link {
+  margin: 0;
+}
+
+.front-link a {
+  color: var(--wp--preset--color--accent);
+  font-size: var(--wp--preset--font-size--xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+}
+
+.front-hero-media {
+  margin: 0;
+}
+
+.front-hero-media img {
+  inline-size: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--gl-radius-card);
+  background: var(--wp--preset--color--surface);
+  filter: grayscale(1);
+}
+
+.front-hero-quote {
+  max-inline-size: 28ch;
+  margin-block-start: calc(var(--wp--preset--spacing--lg) * -1);
+  margin-inline-start: var(--wp--preset--spacing--lg);
+  padding: var(--wp--preset--spacing--sm) var(--wp--preset--spacing--md);
+  background: color-mix(in srgb, var(--wp--preset--color--background) 80%, transparent);
+  border-radius: var(--gl-radius-card);
+}
+
+.front-hero-quote p {
+  margin: 0;
+  color: var(--wp--preset--color--muted);
+  font-style: italic;
+}
+
+@media (max-width: 64rem) {
+  .front-panels {
+    grid-template-columns: 1fr;
+  }
+
+  .manifesto-panel,
+  .front-panel--editorial,
+  .front-panel--ethical {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 48rem) {
+  .front-hero-quote {
+    margin-inline-start: 0;
+    margin-block-start: 0;
+  }
+}

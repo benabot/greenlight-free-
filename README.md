@@ -25,7 +25,9 @@ Greenlight Free est une base de theme WordPress block-first tres legere, pensee 
 - `parts/` : header et footer minimaux.
 - `patterns/` : patterns PHP traduisibles.
 - `inc/` : bootstrap, setup, accessibilite, assets, SEO.
-- `assets/css/screen.css` : couche CSS courte, faible specificite.
+- `assets/css/base.css` : fondations communes du front.
+- `assets/css/listing.css`, `singular.css`, `front-page.css` : couches ciblees chargees selon le contexte.
+- `assets/css/editor.css` : styles d edition minimaux pour Gutenberg.
 - `composer.json` / `phpcs.xml.dist` : outillage PHP strictement utile.
 
 ## Installation
@@ -47,7 +49,7 @@ ln -s /Users/benoitabot/Sites/greenlight-free /Applications/MAMP/htdocs/greenlig
 ## Workflow local
 
 - modifier d abord `theme.json` si un besoin de style ou de token peut etre couvert nativement ;
-- n ajouter du CSS dans `assets/css/screen.css` que pour ce que `theme.json` ne couvre pas proprement ;
+- n ajouter du CSS dans `assets/css/` que pour ce que `theme.json` ne couvre pas proprement, en privilegiant une feuille ciblee plutot qu un bundle global ;
 - n ajouter du PHP que par hook ou service cible dans `inc/` ;
 - ne pas ajouter de JS tant qu une solution native WordPress, HTML ou CSS suffit.
 
