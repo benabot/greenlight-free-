@@ -10,70 +10,126 @@
       "defaultGradients": false,
       "defaultPalette": false,
       "duotone": [],
-      "gradients": [],
+      "gradients": [
+        {
+          "slug": "accent-satin",
+          "name": "Accent Satin",
+          "gradient": "linear-gradient(135deg, #4c6547 0%, #41593c 100%)"
+        }
+      ],
       "palette": [
         {
-          "slug": "base",
-          "color": "#fcfcfa",
-          "name": "Base"
+          "slug": "background",
+          "color": "#faf9f4",
+          "name": "Background"
         },
         {
           "slug": "surface",
-          "color": "#e9ece3",
+          "color": "#f4f4ee",
           "name": "Surface"
         },
         {
-          "slug": "contrast",
-          "color": "#1b1f18",
-          "name": "Contrast"
+          "slug": "surface-alt",
+          "color": "#ffffff",
+          "name": "Surface Alt"
+        },
+        {
+          "slug": "surface-tint",
+          "color": "#e0e3df",
+          "name": "Surface Tint"
+        },
+        {
+          "slug": "text",
+          "color": "#2f342d",
+          "name": "Text"
+        },
+        {
+          "slug": "muted",
+          "color": "#5c6058",
+          "name": "Muted"
         },
         {
           "slug": "accent",
-          "color": "#0f6a51",
+          "color": "#4c6547",
           "name": "Accent"
+        },
+        {
+          "slug": "accent-dim",
+          "color": "#41593c",
+          "name": "Accent Dim"
+        },
+        {
+          "slug": "outline",
+          "color": "#afb3aa",
+          "name": "Outline"
+        },
+        {
+          "slug": "badge",
+          "color": "#e5f4c9",
+          "name": "Badge"
         }
       ]
     },
     "custom": {
-      "flow-space": "clamp(1rem, 2vw, 1.5rem)",
-      "focus-ring": "max(2px, 0.08em) solid currentColor",
-      "measure": "68ch"
+      "flow-space": "clamp(1rem, 1.4vw, 1.4rem)",
+      "focus-ring": "2px solid var(--wp--preset--color--accent)",
+      "measure": "42rem",
+      "shell": "72rem",
+      "radius-card": "1.25rem",
+      "radius-button": "0.5rem",
+      "shadow-whisper": "0 20px 40px rgba(47, 52, 45, 0.04)",
+      "glass-background": "rgba(250, 249, 244, 0.82)"
     },
     "layout": {
       "contentSize": "42rem",
-      "wideSize": "68rem"
+      "wideSize": "72rem"
     },
     "spacing": {
-      "blockGap": "1.5rem",
+      "blockGap": "clamp(1rem, 0.85rem + 0.8vw, 1.5rem)",
       "customSpacingSize": false,
       "spacingSizes": [
         {
+          "slug": "2xs",
+          "size": "clamp(0.375rem, 0.3rem + 0.2vw, 0.5rem)",
+          "name": "2XS"
+        },
+        {
           "slug": "xs",
-          "size": "0.5rem",
+          "size": "clamp(0.5rem, 0.4rem + 0.35vw, 0.75rem)",
           "name": "XS"
         },
         {
-          "slug": "s",
-          "size": "0.75rem",
-          "name": "S"
+          "slug": "sm",
+          "size": "clamp(0.75rem, 0.65rem + 0.45vw, 1rem)",
+          "name": "SM"
         },
         {
-          "slug": "m",
-          "size": "1.5rem",
-          "name": "M"
+          "slug": "md",
+          "size": "clamp(1rem, 0.85rem + 0.8vw, 1.5rem)",
+          "name": "MD"
         },
         {
-          "slug": "l",
-          "size": "3rem",
-          "name": "L"
+          "slug": "lg",
+          "size": "clamp(1.5rem, 1.25rem + 1.4vw, 2.5rem)",
+          "name": "LG"
+        },
+        {
+          "slug": "xl",
+          "size": "clamp(2.5rem, 2rem + 2vw, 4rem)",
+          "name": "XL"
+        },
+        {
+          "slug": "2xl",
+          "size": "clamp(4rem, 3.1rem + 4vw, 6rem)",
+          "name": "2XL"
         }
       ],
       "units": [
         "px",
         "rem",
         "%",
-        "vh",
-        "vw"
+        "vw",
+        "vh"
       ]
     },
     "typography": {
@@ -83,21 +139,21 @@
       "fluid": true,
       "fontFamilies": [
         {
-          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
-          "name": "System Sans",
-          "slug": "system-sans"
-        },
-        {
-          "fontFamily": "Iowan Old Style, Georgia, serif",
-          "name": "System Serif",
-          "slug": "system-serif"
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+          "name": "Editorial Sans",
+          "slug": "editorial-sans"
         }
       ],
       "fontSizes": [
         {
+          "slug": "xs",
+          "size": "0.75rem",
+          "name": "XS"
+        },
+        {
           "slug": "sm",
           "size": "0.875rem",
-          "name": "Small"
+          "name": "SM"
         },
         {
           "slug": "base",
@@ -105,14 +161,24 @@
           "name": "Base"
         },
         {
+          "slug": "md",
+          "size": "clamp(1.125rem, 1rem + 0.35vw, 1.25rem)",
+          "name": "MD"
+        },
+        {
           "slug": "lg",
-          "size": "1.25rem",
-          "name": "Large"
+          "size": "clamp(1.5rem, 1.2rem + 1vw, 2rem)",
+          "name": "LG"
         },
         {
           "slug": "xl",
-          "size": "clamp(1.8rem, 4vw, 3rem)",
+          "size": "clamp(2rem, 1.6rem + 1.8vw, 3rem)",
           "name": "XL"
+        },
+        {
+          "slug": "display",
+          "size": "clamp(3rem, 2.2rem + 3.8vw, 5rem)",
+          "name": "Display"
         }
       ],
       "lineHeight": true
@@ -121,50 +187,56 @@
   },
   "styles": {
     "color": {
-      "background": "var:preset|color|base",
-      "text": "var:preset|color|contrast"
+      "background": "var:preset|color|background",
+      "text": "var:preset|color|text"
     },
     "spacing": {
-      "blockGap": "var:preset|spacing|m",
+      "blockGap": "var:preset|spacing|md",
       "padding": {
-        "top": "var:preset|spacing|m",
-        "right": "var:preset|spacing|m",
-        "bottom": "var:preset|spacing|m",
-        "left": "var:preset|spacing|m"
+        "top": "var:preset|spacing|md",
+        "right": "var:preset|spacing|md",
+        "bottom": "var:preset|spacing|md",
+        "left": "var:preset|spacing|md"
       }
     },
     "typography": {
-      "fontFamily": "var:preset|font-family|system-sans",
+      "fontFamily": "var:preset|font-family|editorial-sans",
       "fontSize": "var:preset|font-size|base",
-      "lineHeight": "1.6"
+      "lineHeight": "1.65"
     },
     "elements": {
       "button": {
         "border": {
-          "radius": "0"
+          "radius": "var(--wp--custom--radius-button)"
         },
         "color": {
-          "background": "var:preset|color|contrast",
-          "text": "var:preset|color|base"
+          "background": "var:preset|color|accent",
+          "text": "var:preset|color|background"
         },
         "spacing": {
           "padding": {
-            "top": "0.625rem",
-            "right": "1rem",
-            "bottom": "0.625rem",
-            "left": "1rem"
+            "top": "0.75rem",
+            "right": "1.125rem",
+            "bottom": "0.75rem",
+            "left": "1.125rem"
           }
         },
         "typography": {
-          "fontFamily": "var:preset|font-family|system-sans",
-          "fontWeight": "600"
+          "fontFamily": "var:preset|font-family|editorial-sans",
+          "fontSize": "var:preset|font-size|sm",
+          "fontWeight": "600",
+          "letterSpacing": "0.02em"
         }
       },
       "heading": {
+        "color": {
+          "text": "var:preset|color|text"
+        },
         "typography": {
-          "fontFamily": "var:preset|font-family|system-serif",
-          "lineHeight": "1.2",
-          "fontWeight": "700"
+          "fontFamily": "var:preset|font-family|editorial-sans",
+          "fontWeight": "700",
+          "letterSpacing": "-0.03em",
+          "lineHeight": "0.96"
         }
       },
       "link": {
@@ -173,6 +245,42 @@
         },
         "typography": {
           "textDecoration": "underline"
+        }
+      }
+    },
+    "blocks": {
+      "core/navigation": {
+        "typography": {
+          "fontSize": "var:preset|font-size|sm",
+          "fontWeight": "500"
+        }
+      },
+      "core/post-date": {
+        "color": {
+          "text": "var:preset|color|muted"
+        },
+        "typography": {
+          "fontSize": "var:preset|font-size|xs",
+          "letterSpacing": "0.04em",
+          "textTransform": "uppercase"
+        }
+      },
+      "core/post-terms": {
+        "color": {
+          "text": "var:preset|color|accent"
+        },
+        "typography": {
+          "fontSize": "var:preset|font-size|xs",
+          "fontWeight": "600",
+          "letterSpacing": "0.08em",
+          "textTransform": "uppercase"
+        }
+      },
+      "core/site-title": {
+        "typography": {
+          "fontSize": "var:preset|font-size|sm",
+          "fontWeight": "700",
+          "letterSpacing": "-0.02em"
         }
       }
     }

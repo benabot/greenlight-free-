@@ -52,6 +52,8 @@ final class Setup {
 			)
 		);
 
+		add_post_type_support( 'page', 'excerpt' );
+
 		add_editor_style( 'assets/css/screen.css' );
 	}
 
