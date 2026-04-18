@@ -58,7 +58,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</div>
 				<!-- /wp:group -->
 
-				<!-- wp:post-excerpt {"moreText":"Read file","excerptLength":18,"className":"entry-summary"} /-->
+				<!-- wp:post-excerpt {"excerptLength":18,"className":"entry-summary"} /-->
 			</div>
 			<!-- /wp:group -->
 		</article>
@@ -66,9 +66,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<!-- /wp:post-template -->
 
 		<!-- wp:query-pagination {"className":"pagination","layout":{"type":"flex","justifyContent":"space-between","flexWrap":"wrap"}} -->
-		<!-- wp:query-pagination-previous {"label":"Previous"} /-->
+		<!-- wp:query-pagination-previous /-->
 		<!-- wp:query-pagination-numbers /-->
-		<!-- wp:query-pagination-next {"label":"Next"} /-->
+		<!-- wp:query-pagination-next /-->
 		<!-- /wp:query-pagination -->
 
 		<!-- wp:query-no-results -->

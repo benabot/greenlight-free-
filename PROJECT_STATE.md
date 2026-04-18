@@ -1,14 +1,14 @@
 # PROJECT_STATE — Greenlight Free
 
 Version : 0.1.0  
-Date : 2026-04-16  
+Date : 2026-04-17  
 Statut global : **structurel complet, validation en cours**
 
 ---
 
 ## Vue d'ensemble
 
-Greenlight Free est un thème WordPress block-first sans customizer. La structure de base est opérationnelle. Les priorités immédiates sont : validation WPCS, traductions et tests manuels sur WordPress local.
+Greenlight Free est un thème WordPress block-first sans customizer. La structure de base est opérationnelle. Les priorités immédiates sont : tests manuels sur WordPress local, validation clavier et génération du fichier de traduction.
 
 ---
 
@@ -46,7 +46,7 @@ Greenlight Free est un thème WordPress block-first sans customizer. La structur
 
 ### `inc/Assets.php`
 - Statut : **stable**
-- Enqueue de `screen.css` avec versionnement filemtime.
+- Enqueue conditionnel de `base.css`, `listing.css`, `singular.css` et `front-page.css` avec versionnement `filemtime`.
 - Aucun JS chargé.
 
 ### `inc/Accessibility.php`
@@ -56,20 +56,22 @@ Greenlight Free est un thème WordPress block-first sans customizer. La structur
 ### `inc/Seo.php`
 - Statut : **stable**
 - SEO natif complet : meta description, canonical, Open Graph, JSON-LD (Organization, WebSite, Article).
+- Evite le doublon de canonical avec WordPress core sur les vues singulières.
 - Détecte Yoast, SEOPress, Rank Math, The SEO Framework — se désactive si l'un d'eux est actif.
 
-### `assets/css/screen.css`
+### `assets/css/`
 - Statut : **mis à jour**
-- CSS moderne : `clamp()`, `min()`, `oklch()`, `color-mix()`, `light-dark()`.
-- Dark mode natif via `light-dark()` + `color-scheme: light dark`.
+- CSS découpé en feuilles ciblées : `base.css`, `listing.css`, `singular.css`, `front-page.css`, `editor.css`.
+- CSS moderne : `clamp()`, `color-mix()`.
+- `base.css` garde `color-scheme: light` pour rester sobre et prévisible.
 - Variables locales `--gl-*` pour les dérivés de couleur non couverts par theme.json.
-- Aucune media query de breakpoint — layout fluide par défaut.
-- À faire : tester le rendu dark mode sur macOS/iOS.
+- Quelques media queries de repli restent présentes pour resserrer le layout sur tablette et mobile.
+- À faire : vérifier que le découpage CSS reste sans duplication de tokens inutiles.
 
 ### `templates/`
 - Statut : **complet pour les cas de base**
 - `index.html` : liste paginée avec query-no-results.
-- `single.html` : article complet — **manque nav prev/next** (voir TODO).
+- `single.html` : article complet avec navigation prev/next.
 - `page.html` : page statique sans date.
 - `archive.html` : archive catégorie/tag avec query-title et term-description.
 - `search.html` : résultats de recherche avec query-title.
@@ -78,13 +80,13 @@ Greenlight Free est un thème WordPress block-first sans customizer. La structur
 ### `parts/`
 - Statut : **minimal fonctionnel**
 - `header.html` : site-title + navigation responsive.
-- `footer.html` : site-title + site-tagline.
+- `footer.html` : site-title + navigation + site-tagline, sans année ni marque figée.
 
 ### `patterns/`
-- Statut : **fonctionnel, textes à corriger**
+- Statut : **fonctionnel**
 - `404.php` : h1 + paragraph + bloc search.
 - `no-results.php` : paragraph + bloc search.
-- À faire : corriger les apostrophes manquantes dans les chaînes traduisibles.
+- Les libellés de lecture et de pagination sont harmonisés.
 
 ### `languages/`
 - Statut : **vide**
@@ -95,7 +97,7 @@ Greenlight Free est un thème WordPress block-first sans customizer. La structur
 - Statut : **stable**
 - WPCS 3.x + PHPCompatibilityWP configurés.
 - PHPCS couvre `functions.php`, `inc/`, `patterns/`.
-- À faire : lancer `composer phpcs` et corriger les écarts.
+- `composer phpcs` passe sans erreur.
 
 ---
 
@@ -108,8 +110,8 @@ Greenlight Free est un thème WordPress block-first sans customizer. La structur
 | Polices système uniquement | Zéro requête réseau externe, chargement immédiat |
 | Pas de JS par défaut | Aucun besoin identifié — WordPress natif suffit |
 | SEO natif dans le thème | Fallback pour les sites sans plugin SEO, se désactive automatiquement |
-| `color-scheme: light dark` | Dark mode sans JS, sans requête supplémentaire |
-| `color-mix()` + `oklch()` | Dérivés de couleur calculés en CSS pur, sans variable supplémentaire dans theme.json |
+| CSS conditionnel par gabarit | Limite les octets chargés selon le contexte |
+| `color-mix()` | Dérivés de couleur calculés en CSS pur, sans variable supplémentaire dans theme.json |
 
 ---
 
@@ -129,4 +131,4 @@ Aucune dépendance front. Aucune dépendance PHP runtime.
 
 - WordPress : 6.5+
 - PHP : 7.4+
-- Navigateurs : tout navigateur supportant les fonctions CSS modernes (oklch, light-dark, color-mix) — Chrome 119+, Firefox 128+, Safari 17+
+- Navigateurs : tout navigateur supportant les fonctions CSS modernes utilisées par le thème, notamment `color-mix()` — Chrome 119+, Firefox 128+, Safari 17+

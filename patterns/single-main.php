@@ -37,6 +37,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</article>
 	<!-- /wp:group -->
 
+	<!-- wp:group {"tagName":"nav","className":"post-navigation","layout":{"type":"flex","justifyContent":"space-between","flexWrap":"wrap"}} -->
+	<nav class="wp-block-group post-navigation" aria-label="<?php echo esc_attr__( 'Navigation entre les articles', 'greenlight-free' ); ?>">
+		<!-- wp:post-navigation-link {"type":"previous","showTitle":true} /-->
+		<!-- wp:post-navigation-link {"showTitle":true} /-->
+	</nav>
+	<!-- /wp:group -->
+
 	<!-- wp:pattern {"slug":"greenlight-free/rss-cta-centered"} /-->
 </main>
 <!-- /wp:group -->

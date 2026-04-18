@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p><?php esc_html_e( 'La page demandee n existe pas ou n est plus disponible.', 'greenlight-free' ); ?></p>
+<p><?php esc_html_e( 'La page demandee n\'existe pas ou n\'est plus disponible.', 'greenlight-free' ); ?></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:search {"showLabel":false,"buttonPosition":"button-inside","buttonUseIcon":true} /-->

@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <!-- wp:paragraph -->
-<p><?php esc_html_e( 'Aucun contenu trouve.', 'greenlight-free' ); ?></p>
+<p><?php esc_html_e( 'Aucun contenu disponible.', 'greenlight-free' ); ?></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:search {"showLabel":false,"buttonPosition":"button-inside","buttonUseIcon":true} /-->

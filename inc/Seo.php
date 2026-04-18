@@ -49,7 +49,7 @@ final class Seo {
 			);
 		}
 
-		if ( $canonical ) {
+		if ( $canonical && ! is_singular() ) {
 			printf(
 				"<link rel=\"canonical\" href=\"%s\" />\n",
 				esc_url( $canonical )
