@@ -263,7 +263,7 @@
       },
       "core/site-title": {
         "typography": {
-          "fontSize": "var:preset|font-size|sm",
+          "fontSize": "clamp(1.125rem, 0.95rem + 0.7vw, 1.5rem)",
           "fontWeight": "700",
           "letterSpacing": "-0.02em"
         }

@@ -99,7 +99,7 @@ body {
 
 .site-brand a {
   color: inherit;
-  font-size: var(--wp--preset--font-size--sm);
+  font-size: clamp(1.125rem, 0.95rem + 0.7vw, 1.5rem);
   font-weight: 700;
   text-decoration: none;
   letter-spacing: -0.02em;
