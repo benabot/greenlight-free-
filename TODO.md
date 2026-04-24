@@ -36,6 +36,7 @@ Thème WordPress block-first, sans customizer, sans dépendance front.
 - [x] URL officielle du thème ajoutée dans `style.css` : https://beabot.fr/greenlight/
 - [x] Version thème portée à 1.0.0 pour la release initiale
 - [x] Titre du site agrandi avec une taille fluide modérée
+- [x] Menu mobile du bloc Navigation poli pour la release
 - [x] Fichier `.pot` généré : `languages/greenlight-free.pot`
 - [x] README utilisateur créé avec installation, activation, personnalisation, multilingue, FAQ et changelog
 - [x] `screenshot.png` mis à jour au format WordPress 1200 × 900
