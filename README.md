@@ -1,79 +1,92 @@
 # Greenlight Free
 
-Greenlight Free est une base de theme WordPress block-first tres legere, pensee pour remplacer un theme plus massif par une fondation sobre, durable et exploitable sans build front.
+Greenlight Free est un theme WordPress block-first sobre, accessible et maintenable. Il s'appuie sur l'editeur de site, les blocs natifs et `theme.json` pour proposer une base legere, sans JavaScript propre au theme ni dependance front.
 
-## Vision
+## Site officiel du theme
 
-- rester minimaliste sans sacrifier l accessibilite ;
-- utiliser WordPress moderne avant toute surcouche ;
-- privilegier `theme.json`, les templates HTML et les blocs natifs ;
-- limiter le DOM, le CSS, le JS, les dependances et la dette technique.
+Site officiel et presentation : https://beabot.fr/greenlight/
 
-## Principes
+## Demo / presentation
 
-- aucun JavaScript charge par defaut ;
-- aucune police externe, aucune librairie front, aucun framework CSS ;
-- SEO natif minimal dans `inc/Seo.php` tant qu aucun plugin SEO ne prend la main ;
-- HTML semantique, skip link, focus visible, layouts fluides ;
-- PHP mince et modulaire dans `inc/`.
+La page officielle presente l'esprit du theme, ses choix de sobriete et les informations de publication. Le theme peut etre utilise pour un journal, un site editorial simple ou une base de projet WordPress durable.
 
-## Structure
+## Prerequis
 
-- `style.css` : en-tete du theme WordPress.
-- `theme.json` : design tokens, styles globaux, largeur de contenu.
-- `templates/` : templates HTML du block theme.
-- `parts/` : header et footer minimaux.
-- `patterns/` : patterns PHP traduisibles.
-- `inc/` : bootstrap, setup, accessibilite, assets, SEO.
-- `assets/css/base.css` : fondations communes du front.
-- `assets/css/listing.css`, `singular.css`, `front-page.css` : couches ciblees chargees selon le contexte.
-- `assets/css/editor.css` : styles d edition minimaux pour Gutenberg.
-- `composer.json` / `phpcs.xml.dist` : outillage PHP strictement utile.
+- WordPress 6.5 ou superieur.
+- PHP 7.4 ou superieur.
+- Un site compatible avec les themes de blocs et l'editeur de site WordPress.
 
 ## Installation
 
-1. Installer les dependances PHP :
+1. Telechargez l'archive `greenlight-free-v1.0.0.zip`.
+2. Dans l'administration WordPress, ouvrez `Apparence > Themes`.
+3. Cliquez sur `Ajouter un theme`, puis `Televerser un theme`.
+4. Selectionnez l'archive ZIP et lancez l'installation.
 
-```bash
-composer install
-```
+Vous pouvez aussi deposer le dossier `greenlight-free` dans `wp-content/themes/` si vous installez le theme manuellement.
 
-2. Symlinker le theme dans WordPress local :
+## Activation
 
-```bash
-ln -s /Users/benoitabot/Sites/greenlight-free /Applications/MAMP/htdocs/greenlight/wp-content/themes/greenlight-free
-```
+Apres l'installation, cliquez sur `Activer` depuis `Apparence > Themes`. WordPress utilise alors les templates du theme pour l'accueil, les articles, les pages, les archives, la recherche et la page 404.
 
-3. Activer le theme depuis l administration WordPress.
+## Personnalisation
 
-## Workflow local
+La personnalisation se fait principalement dans `Apparence > Editeur`.
 
-- modifier d abord `theme.json` si un besoin de style ou de token peut etre couvert nativement ;
-- n ajouter du CSS dans `assets/css/` que pour ce que `theme.json` ne couvre pas proprement, en privilegiant une feuille ciblee plutot qu un bundle global ;
-- n ajouter du PHP que par hook ou service cible dans `inc/` ;
-- ne pas ajouter de JS tant qu une solution native WordPress, HTML ou CSS suffit.
+- Modifiez le titre, le slogan et la navigation avec les blocs natifs WordPress.
+- Ajustez les contenus de pages et d'articles depuis l'editeur standard.
+- Utilisez les styles globaux exposes par le theme sans ajouter de framework externe.
+- Ajoutez vos images mises en avant depuis WordPress ; le theme ne charge aucune image distante par defaut.
 
-## Scripts Composer
+## Gestion du multilingue
 
-- `composer phpcs` : lance WPCS et PHPCompatibility.
-- `composer phpcbf` : corrige automatiquement une partie des ecarts de style.
-- `composer lint` : alias simple vers `phpcs`.
+Le text domain du theme est `greenlight-free`. Le dossier `languages/` contient le fichier `greenlight-free.pot`, qui sert de base aux traductions.
 
-## Regles de contribution
+Pour traduire le theme :
 
-- garder les diffs courts et motives ;
-- documenter tout impact sur DOM, CSS, JS, accessibilite, SEO et compatibilite WordPress ;
-- preferer les blocs natifs, patterns et templates avant tout bloc custom ;
-- justifier toute dependance et toute hausse durable de complexite.
+1. Creez un fichier `.po` depuis `languages/greenlight-free.pot` avec votre outil de traduction habituel.
+2. Compilez le fichier `.mo` correspondant.
+3. Placez les fichiers de langue dans `wp-content/languages/themes/` ou dans le dossier `languages/` du theme selon votre workflow.
 
-## Philosophie Greenlight Free
+Le theme utilise les fonctions WordPress de traduction pour ses chaines visibles et laisse les contenus editoriaux aux outils multilingues habituels de WordPress.
 
-Greenlight Free cherche une sobriete utile : moins de couches, moins de surprises, plus de stabilite. Le theme doit rester lisible par un humain, maintenable sur plusieurs annees et compatible avec une collaboration IA outillee.
+## Structure utile du theme
 
-## Differences avec Greenlight
+- `style.css` : en-tete WordPress du theme.
+- `theme.json` : couleurs, typographies, espacements et styles globaux.
+- `functions.php` : bootstrap minimal.
+- `inc/` : services PHP du theme, dont assets, setup, accessibilite et SEO natif minimal.
+- `templates/` : templates block theme.
+- `parts/` : header et footer.
+- `patterns/` : patterns PHP reutilises par les templates.
+- `assets/css/` : styles front et editeur, charges de facon ciblee.
+- `languages/` : base de traduction.
+- `screenshot.png` : apercu du theme dans l'administration WordPress.
 
-- plus block-first ;
-- plus centre sur `theme.json` ;
-- aucune dependance front par defaut ;
-- SEO natif minimal et isole ;
-- documentation courte pour Codex et Claude Code.
+## FAQ
+
+### Le theme charge-t-il du JavaScript ?
+
+Non. Greenlight Free ne charge aucun JavaScript propre au theme par defaut.
+
+### Puis-je utiliser un plugin SEO ?
+
+Oui. Le SEO natif minimal du theme se desactive quand un plugin majeur comme Yoast, SEOPress, Rank Math ou The SEO Framework est detecte.
+
+### Puis-je modifier les couleurs et la typographie ?
+
+Oui, depuis les styles globaux de l'editeur de site, dans les limites exposees par `theme.json`.
+
+### Le theme convient-il a WooCommerce ?
+
+Il n'est pas concu comme theme e-commerce. Il vise d'abord les sites editoriaux sobres.
+
+## Changelog
+
+### 1.0.0
+
+- Premiere version publique du theme.
+- Structure block-first complete.
+- Styles responsives sobres et accessibles.
+- Text domain `greenlight-free` et fichier POT initial.
+- Documentation utilisateur et screenshot de theme.
