@@ -1,6 +1,6 @@
 # TODO — Greenlight Free
 
-Version de travail : 0.1.0  
+Version de travail : 1.0.0  
 Thème WordPress block-first, sans customizer, sans dépendance front.
 
 ---
@@ -13,11 +13,6 @@ Thème WordPress block-first, sans customizer, sans dépendance front.
 - [ ] Vérifier manuellement le rendu sur WordPress local : index, single, page, archive, search, 404
 - [ ] Tester la navigation clavier (skip link, menu, focus visible)
 - [ ] Vérifier que le skip link pointe bien sur `#main-content` dans tous les templates
-
-### Contenu et traductions
-
-- [ ] Générer le fichier `.pot` (`languages/greenlight-free.pot`) — les chaînes PHP sont en place, le fichier manque
-- [x] Corriger les libellés visibles et les formulations trop brutes dans les patterns et le footer
 
 ### Templates
 
@@ -38,6 +33,12 @@ Thème WordPress block-first, sans customizer, sans dépendance front.
 
 ## Fait
 
+- [x] URL officielle du thème ajoutée dans `style.css` : https://beabot.fr/greenlight/
+- [x] Version thème portée à 1.0.0 pour la release initiale
+- [x] Titre du site agrandi avec une taille fluide modérée
+- [x] Fichier `.pot` généré : `languages/greenlight-free.pot`
+- [x] README utilisateur créé avec installation, activation, personnalisation, multilingue, FAQ et changelog
+- [x] `screenshot.png` mis à jour au format WordPress 1200 × 900
 - [x] Structure block theme complète : `templates/`, `parts/`, `patterns/`
 - [x] `theme.json` : palette, typographie, espacements, layout, tokens custom
 - [x] PHP modulaire dans `inc/` : App, Setup, Assets, Accessibility, Seo
@@ -48,6 +49,11 @@ Thème WordPress block-first, sans customizer, sans dépendance front.
 - [x] `composer.json` avec autoload PSR-4 et scripts lint/phpcs/phpcbf
 - [x] Aucun JS chargé par défaut
 - [x] Aucune dépendance front
+
+### Contenu et traductions
+
+- [x] Générer le fichier `.pot` (`languages/greenlight-free.pot`)
+- [x] Corriger les libellés visibles et les formulations trop brutes dans les patterns et le footer
 
 ---
 

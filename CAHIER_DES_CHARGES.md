@@ -1,7 +1,7 @@
 # Cahier des charges — Greenlight Free
 
-Version : 0.1.0  
-Date : 2026-04-16
+Version : 1.0.0  
+Date : 2026-04-24
 
 ---
 
@@ -12,6 +12,8 @@ Greenlight Free est un thème WordPress conçu pour être utilisé comme base so
 L'objectif est double :
 - fournir un thème fonctionnel en production avec un coût technique minimal ;
 - constituer une base documentée pour une collaboration humain-IA outillée.
+
+Site officiel du thème : https://beabot.fr/greenlight/
 
 ---
 
@@ -166,7 +168,8 @@ Les fonctionnalités suivantes n'ont pas leur place dans ce thème :
 - [ ] Une seule requête CSS front (screen.css).
 - [ ] Aucune requête vers un domaine externe.
 - [ ] Rendu dark mode cohérent (macOS/iOS en mode sombre).
-- [ ] Fichier `.pot` généré.
+- [x] Fichier `.pot` généré.
+- [x] URL officielle du thème renseignée dans l'en-tête WordPress.
 - [ ] Aucune duplication entre `theme.json` et `screen.css`.
 
 ### Checklist DOM (par template)
