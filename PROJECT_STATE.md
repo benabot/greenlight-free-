@@ -1,14 +1,14 @@
 # PROJECT_STATE — Greenlight Free
 
-Version : 0.1.0  
-Date : 2026-04-17  
-Statut global : **structurel complet, validation en cours**
+Version : 1.0.0  
+Date : 2026-04-24  
+Statut global : **pret pour release v1.0.0**
 
 ---
 
 ## Vue d'ensemble
 
-Greenlight Free est un thème WordPress block-first sans customizer. La structure de base est opérationnelle. Les priorités immédiates sont : tests manuels sur WordPress local, validation clavier et génération du fichier de traduction.
+Greenlight Free est un thème WordPress block-first sans customizer. La structure de base est opérationnelle pour une première release publique. Les priorités restantes sont : validation manuelle complète sur WordPress local et contrôle clavier final sur contenus réels.
 
 ---
 
@@ -17,7 +17,8 @@ Greenlight Free est un thème WordPress block-first sans customizer. La structur
 ### `style.css`
 - Statut : **stable**
 - En-tête de thème WordPress uniquement, aucun style runtime dedans.
-- Rien à faire.
+- `Theme URI` renseigné : https://beabot.fr/greenlight/
+- Version déclarée : 1.0.0.
 
 ### `theme.json`
 - Statut : **stable**
@@ -27,7 +28,7 @@ Greenlight Free est un thème WordPress block-first sans customizer. La structur
 - Layout : contentSize 42rem, wideSize 68rem.
 - Tokens custom : `flow-space`, `focus-ring`, `measure`.
 - `appearanceTools: false` — choix délibéré pour limiter la complexité éditeur.
-- Rien à faire.
+- Le bloc `core/site-title` utilise une taille fluide modérée pour améliorer la présence du titre sans effet excessif.
 
 ### `functions.php`
 - Statut : **stable**
@@ -90,8 +91,18 @@ Greenlight Free est un thème WordPress block-first sans customizer. La structur
 
 ### `languages/`
 - Statut : **vide**
-- Les chaînes PHP sont correctement balisées avec `__()` / `esc_html_e()`.
-- À faire : générer `greenlight-free.pot`.
+- Le text domain est `greenlight-free`.
+- Les chaînes PHP visibles sont balisées avec les fonctions de traduction WordPress adaptées.
+- `languages/greenlight-free.pot` est généré.
+
+### `README.md`
+- Statut : **utilisateur**
+- Documentation orientée installation, activation, personnalisation, multilingue, structure utile, FAQ et changelog v1.0.0.
+- Mentionne le site officiel : https://beabot.fr/greenlight/
+
+### `screenshot.png`
+- Statut : **prêt**
+- Capture 1200 × 900 à la racine du thème, conforme aux usages WordPress.
 
 ### `composer.json` / `phpcs.xml.dist`
 - Statut : **stable**
@@ -112,6 +123,7 @@ Greenlight Free est un thème WordPress block-first sans customizer. La structur
 | SEO natif dans le thème | Fallback pour les sites sans plugin SEO, se désactive automatiquement |
 | CSS conditionnel par gabarit | Limite les octets chargés selon le contexte |
 | `color-mix()` | Dérivés de couleur calculés en CSS pur, sans variable supplémentaire dans theme.json |
+| Site title fluide | Présence visuelle renforcée via `clamp()` sans surcharger le DOM |
 
 ---
 
@@ -132,3 +144,15 @@ Aucune dépendance front. Aucune dépendance PHP runtime.
 - WordPress : 6.5+
 - PHP : 7.4+
 - Navigateurs : tout navigateur supportant les fonctions CSS modernes utilisées par le thème, notamment `color-mix()` — Chrome 119+, Firefox 128+, Safari 17+
+
+---
+
+## Impact release v1.0.0
+
+- DOM : aucun wrapper ajouté.
+- CSS : une valeur typographique fluide modifiée pour le titre du site.
+- JS : aucun JavaScript ajouté.
+- Accessibilité : titre du site plus lisible, focus et navigation inchangés.
+- SEO : URL officielle ajoutée dans l'en-tête WordPress du thème ; SEO natif inchangé.
+- Maintenabilité : documentation utilisateur clarifiée, POT généré.
+- Compatibilité WordPress : structure block theme préservée, `theme.json` maintenu comme source principale.
