@@ -1,0 +1,293 @@
+# Copyright (C) 2026 Benoit Abot
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Greenlight Free 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/greenlight-free\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-04-24T09:56:52+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: greenlight-free\n"
+
+#. Theme Name of the theme
+#: style.css
+#: inc/Setup.php:75
+msgid "Greenlight Free"
+msgstr ""
+
+#. Theme URI of the theme
+#: style.css
+msgid "https://beabot.fr/greenlight/"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "Theme WordPress block-first, sobre, accessible et maintenable."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "Benoit Abot"
+msgstr ""
+
+#. translators: %s: search query.
+#: inc/Seo.php:122
+#, php-format
+msgid "Resultats de recherche pour \"%s\"."
+msgstr ""
+
+#: patterns/404.php
+msgctxt "Pattern title"
+msgid "404 Content"
+msgstr ""
+
+#: patterns/404.php:16
+msgid "Page introuvable"
+msgstr ""
+
+#: patterns/404.php:20
+msgid "La page demandee n'existe pas ou n'est plus disponible."
+msgstr ""
+
+#: patterns/archive-main.php
+msgctxt "Pattern title"
+msgid "Archive Main"
+msgstr ""
+
+#: patterns/archive-main.php:22
+msgid "Archive Journal"
+msgstr ""
+
+#: patterns/archive-main.php:31
+msgid "A slow index of essays and field notes."
+msgstr ""
+
+#: patterns/front-page-layout.php
+msgctxt "Pattern title"
+msgid "Front Page Layout"
+msgstr ""
+
+#: patterns/front-page-layout.php:40
+msgid "Nature does not hurry, yet everything is accomplished. Our digital world should reflect this timeless wisdom."
+msgstr ""
+
+#: patterns/front-panels.php
+msgctxt "Pattern title"
+msgid "Front Panels"
+msgstr ""
+
+#: patterns/front-panels.php:20
+msgid "Our Philosophy"
+msgstr ""
+
+#: patterns/front-panels.php:24
+msgid "Digital items that age like fine linen."
+msgstr ""
+
+#: patterns/front-panels.php:28
+msgid "Explore our manifesto"
+msgstr ""
+
+#: patterns/front-panels.php:36
+msgid "Editorial Authority"
+msgstr ""
+
+#: patterns/front-panels.php:39
+msgid "Carefully curated long-form content that respects your time and attention span."
+msgstr ""
+
+#: patterns/front-panels.php:47
+msgid "Ethical Architecture"
+msgstr ""
+
+#: patterns/front-panels.php:50
+msgid "Building tools and frameworks that minimize data transfer and energy consumption."
+msgstr ""
+
+#: patterns/journal-main.php
+msgctxt "Pattern title"
+msgid "Journal Main"
+msgstr ""
+
+#: patterns/journal-main.php:22
+msgid "The Digital Lithograph."
+msgstr ""
+
+#: patterns/journal-main.php:30
+msgid "Exploring the intersection of permanence and digital ecology. A journal dedicated to lasting ideas and low-carbon design."
+msgstr ""
+
+#: patterns/no-results.php
+msgctxt "Pattern title"
+msgid "No Results"
+msgstr ""
+
+#: patterns/no-results.php:16
+msgid "Aucun contenu disponible."
+msgstr ""
+
+#: patterns/page-main.php
+msgctxt "Pattern title"
+msgid "Page Main"
+msgstr ""
+
+#: patterns/rss-cta-centered.php
+msgctxt "Pattern title"
+msgid "RSS CTA Centered"
+msgstr ""
+
+#: patterns/rss-cta-centered.php:20
+msgid "Follow via RSS."
+msgstr ""
+
+#: patterns/rss-cta-centered.php:24
+msgid "Subscribe with your feed reader and keep the site free of signup forms, trackers and extra scripts."
+msgstr ""
+
+#: patterns/rss-cta-centered.php:30
+msgid "Open RSS feed"
+msgstr ""
+
+#: patterns/single-main.php
+msgctxt "Pattern title"
+msgid "Single Main"
+msgstr ""
+
+#: patterns/single-main.php:41
+msgid "Navigation entre les articles"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Background"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Surface"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Surface Alt"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Text"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Muted"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Accent"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Accent Dim"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Outline"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Badge"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2XS"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "XS"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "SM"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "MD"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "LG"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "XL"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2XL"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "System Sans"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XS"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "SM"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Base"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "MD"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "LG"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XL"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Display"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr ""
