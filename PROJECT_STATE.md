@@ -151,6 +151,7 @@ Aucune dépendance front. Aucune dépendance PHP runtime.
 
 - DOM : aucun wrapper ajouté.
 - CSS : une valeur typographique fluide modifiée pour le titre du site.
+- CSS mobile : menu de navigation overlay simplifié, focus clavier conservé sans effet de champ de formulaire.
 - JS : aucun JavaScript ajouté.
 - Accessibilité : titre du site plus lisible, focus et navigation inchangés.
 - SEO : URL officielle ajoutée dans l'en-tête WordPress du thème ; SEO natif inchangé.
